@@ -1,10 +1,10 @@
 module Test.Main where
 
 import Prelude
-
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, logShow)
-import Data.AddressBook (AddressBook, Entry, emptyBook, insertEntry, findEntry, showEntry)
+import Data.AddressBook (AddressBook, Entry, containsName, emptyBook, findEntry, findEntryByAddress, insertEntry, removeDuplicates, showEntry)
+import Data.List (length)
 import Data.Maybe (Maybe)
 
 example :: Entry
@@ -29,3 +29,9 @@ main = do
 
   logShow $ printEntry "John" "Smith" book0
   logShow $ printEntry "John" "Smith" book1
+  logShow $ map showEntry $ findEntryByAddress "123 Fake St." book1
+
+  logShow $ containsName "James" "Smith" book1
+
+  let book2 = insertEntry example $ insertEntry example book1
+  logShow $ length $ removeDuplicates book2
