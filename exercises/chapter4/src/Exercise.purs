@@ -89,7 +89,7 @@ triples n = do
   pure [a, b, c]
   where m = n - 1
 
--- Write a function factorizations which produces all factorizations of
+-- TODO: Write a function factorizations which produces all factorizations of
 -- an integer n, i.e. arrays of integers whose product is n.
 
 
